@@ -4,6 +4,22 @@
   background-color: #990000;
 }
 
+body{
+  margin: 0px;
+}
+
+.title{
+  display: inline;
+  float:left;
+}
+
+.footnote{
+  text-align: center;
+  color: white;
+  text-align: center;
+  margin-top: 15px;
+}
+
 img{
   height: 200px;
   width: 100%;
@@ -15,21 +31,19 @@ img{
 }
 
 .flex-child {
-    flex: 1;
-    height: 500px;
+    width: 100%;
+    margin-right: 100px;
 }
 
 .flex-child:first-child {
-    margin-right: 100px;
-    margin-left: 250px;
+    margin-right: 80px;
+    margin-left: 150px;
 }
-
 
 #write-well{
   color: #FFCC00;
   padding: 12px 5px 5px 5px;
   text-align: justify;
-  text-justify:inter-word;
   margin: 0;
   top: 50%;
 }
@@ -62,4 +76,34 @@ div.gallery img {
 div.desc {
   padding: 15px;
   text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #990000;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  font-size: 17px;
+  padding: 14px 16px;
+  text-decoration: none;
+  height: 25px;
+}
+
+li a:hover:not(.active) {
+  background-color: #FFCC00;
+}
+
+.active {
+  background-color: #FFCC00;
 }
