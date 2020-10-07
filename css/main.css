@@ -10,6 +10,14 @@ body{
   margin: 0px;
 }
 
+#logout{
+  margin: 110px 70px 30px 25px;
+  width: 250px;
+  font-size: 18px;
+  font-weight: bold;
+  height: 40px;
+}
+
 .footnote{
   text-align: center;
   color: #ffcc00 !important;
@@ -274,8 +282,37 @@ button:hover {
   padding-top: 60px;
 }
 
+.heading{
+  color:black; 
+  margin: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.viewTop{
+  height: 40px !important;
+  width: 670px !important;
+  margin: 20px !important;
+  border-radius: 5px;
+}
+
+#viewButton{
+  width: 80px;
+  margin: 20px 20px 20px 10px;
+  height: 40px;
+  background-color:#93ba7c!important;
+}
+
+#filter{
+  width: 50px;
+  height: 40px;
+  margin: 20px 20px 20px 0px;
+  background-color:#93ba7c!important;
+  
+}
+
 .sidebar a {
-  padding: 10px 8px 8px 30px;
+  padding: 10px 8px 8px 0px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -298,11 +335,6 @@ button:hover {
   background-color: #b54141;
 }
 
-/*#main {*/
-/*  transition: margin-left .5s;*/
-/*  padding: 16px;*/
-/*}*/
-
 .avatar {
   vertical-align: middle;
   width: 80px;
@@ -324,4 +356,66 @@ button:hover {
   font-size: 15px;
   color: white;
   display: block;
+}
+
+.mid{
+  text-align: center;
+  margin-left: 20px;
+}
+
+/*CUSTOM FILTER DROPDOWNS*/
+.custom-select{
+  width:200px; 
+  display:inline; 
+  margin-left: 30px;
+}
+
+#clearFilter{
+  width: 50px;
+  height: 32px;
+  margin-right: 20px;
+  margin-top: 0;
+  margin-left: 0px;
+  padding-left: 19px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #D14242;
+}
+
+#applyButton{
+  margin: 0;
+  height: 31px;
+  margin-right: 20px;
+  width: 80px;
+  background-color: #93ba7c!important;
+}
+
+.options{
+  width: 100px;
+  text-align: center;
+  height: 30px;
+}
+
+/*TABLE*/
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.tableView{
+  margin-top:120px;
+}
+
+.records{
+  width: 95%;
+}
+
+.pos{
+  text-align:center;
 }

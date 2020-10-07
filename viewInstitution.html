@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
@@ -34,6 +35,112 @@
       <a class="mid" href="#clients">View Institution</a>
       <a class="mid" href="#contact">Pending Tasks</a>
       <a class="mid" href="#contact">Recovery Bin</a>
+      <button id="logout" class="btn submits sign-up newButtons">Sign Out</button>
+    </div>
+    
+    <div id="view" style="background-color: #f7f1f1">
+      <ul style="margin-bottom: 0px">
+        <li class="heading">View Institutions</li>
+        <li style="float:right"><button id="filter" class="btn submits sign-up newButtons" onclick="toggleFilterMenu()"><i class="fa fa-filter"></i></button></li>
+        <li style="float:right"><button id="viewButton" class="btn submits sign-up newButtons">View</button></li>
+        <li style="float:right"><input class="form-input viewTop" id="txt-input" type="text" placeholder="  Find Universities" required></li>
+      </ul>
+    </div>
+    
+    <div id="filterMenu" style="display:none!important; background-color: #f7f1f1">
+      <ul>
+        <li>
+          <div class="custom-select">
+            <label>Show Entries
+              <select name="list_length" aria-controls="list" class="options">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="custom-select">
+            <label>Status
+              <select name="list_length" aria-controls="list" class="options">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="custom-select">
+            <label>Date
+              <select name="list_length" aria-controls="list" class="options">
+                <option value="today">Today</option>
+                <option value="current">This Week</option>
+                <option value="prev">Last Week</option>
+                <option value="custom">Custom</option>
+              </select>
+            </label>
+          </div>
+        </li>
+        <li>
+          <div class="custom-select">
+            <label> Institution Name
+              <select name="list_length" aria-controls="list" class="options">
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+              </select>
+            </label>
+          </div>
+        </li>
+        <li style="float:right;"><button id="clearFilter" class="btn submits sign-up newButtons">x</button></li>
+        <li style="float:right;"><button id="applyButton" class="btn submits sign-up newButtons">Apply</button></li>
+      </ul>
+    </div>
+    
+    <div id="tableDisplay" class="tableView">
+      <table class="records">
+        <tr>
+          <th>GEOCODE</th>
+          <th>INSTITUTION NAME</th>
+          <th>COUNTRY</th>
+          <th>STATUS</th>
+          <th>EDIT RECORD</th>
+          <th>DELETE RECORD</th>
+        </tr>
+        <tr>
+          <td>US000567</td>
+          <td>University of Southern California</td>
+          <td>Los Angeles, CA</td>
+          <td>Active</td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:70px"><i class="fa fa-pencil-square pos" aria-hidden="true"></i></button></td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:80px"><i class="fa fa-trash pos" aria-hidden="true"></i></button></td>
+        </tr>
+        <tr>
+          <td>IN00008</td>
+          <td>University of Mumbai</td>
+          <td>Mumbai, India</td>
+          <td>Active</td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:70px"><i class="fa fa-pencil-square" aria-hidden="true"></i></button></td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:80px"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+        </tr>
+        <tr>
+          <td>CA00005</td>
+          <td>University of Toronto</td>
+          <td>Toronto, VA</td>
+          <td>Active</td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:70px"><i class="fa fa-pencil-square" aria-hidden="true"></i></button></td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:80px"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+        </tr>
+        <tr>
+          <td>CH00234</td>
+          <td>Peking University</td>
+          <td>China</td>
+          <td>Active</td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:70px"><i class="fa fa-pencil-square" aria-hidden="true"></i></button></td>
+          <td><button id="clearFilter" class="btn submits sign-up newButtons" style="margin-left:80px"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+        </tr>
+      </table>
     </div>
     
      <div class="container-footer">
@@ -50,5 +157,7 @@
     </div>
     <script src="js/index_graph.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
   </body>
   </html>
