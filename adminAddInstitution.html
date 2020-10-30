@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin Add Institution</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <script type="text/javascript" src="js/aws-sdk-2.771.0.min.js"></script>
+  <script type="text/javascript" src="js/config.js"></script>
+  <script type="text/javascript" src="js/amazon-cognito-identity.min.js"></script>
+  <script type="text/javascript" src="js/cognito_helper_functions.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/add_uni.js"></script>
+</head>
+
+<body>
+  <div class="navbar">
+    <ul>
+      <li id="title">GEOCODE DATA READER</li>
+      <li style="float:right"><a class="active" href="index.html">Home</a></li>
+      <li style="float:right"><button class="openbtn menu" onclick="openNav()">☰ Menu</button></li>
+      <li id="intro"></li>
+    </ul>
+  </div>
+
+  <div id="mySidebar" class="sidebar">
+    <ul>
+      <li><img src="img/img_avatar.png" class="avatar"></li>
+      <li class="sideIntro1"></li>
+      <li class="sideIntro2">Admin</li>
+      <li style="float:right"><a href="#" class="closebtn" onclick="closeNav()">×</a></li>
+    </ul>
+
+    <a class="mid" href="#home">Dashboard</a>
+    <a class="mid" href="adminAddInstitution.html">Add Institution</a>
+    <a class="mid" href="viewInstitution.html">View Institution</a>
+    <a class="mid" href="pendingTasks.html">Pending Tasks</a>
+    <a class="mid" href="#contact">Recovery Bin</a>
+    <button type="button" id="logout" class="btn submits sign-up newButtons" onclick="signOut()">Sign Out</button>
+  </div>
+
+  <div class="overlay" style"overflow:auto;">
+      <form class="login" id="add_institution_form" style="width:700px;">
+          <div class="con" style="margin:95px 0px 95px 0px;">
+              <header class="head-form">
+                  <h2>Add Institution Details</h2>
+              </header>
+              <br>
+              <div class="field-set">
+                  <label id="cc">Country Code:<span style="color:red;">*</span></label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 190px;" class="form-input" type="text" id="countrycode" placeholder="   C Code" pattern=".*" required>
+                  <br>
+                  <label id="pc">PESC Code:<span style="color:red;">*</span></label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 210px;" class="form-input" type="text" id="pesccode" placeholder="   P Code" pattern=".*" required>
+                  <br>
+                  <label id="st">Status:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 255px;" class="form-input" type="text" id="status" placeholder="   Status">
+                  <br>
+                  <label id="str">Status Reason:</label>
+                  <input style="height: 48.5px;width: 248px;margin-left: 195px;" class="form-input" type="text" id="statusreason" placeholder="  Reason">
+                  <br>
+                  <label id="stn">Status Notes:</label>
+                  <input style="height: 48.5px;width: 248px;margin-left: 208px;" class="form-input" type="text" id="statusnotes" placeholder="  Notes">
+                  <br>
+                  <label id="in_name">Institution Name:<span style="color:red;">*</span></label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 170px;" class="form-input" type="text" id="institution_name" placeholder="   Name" pattern=".*" required>
+                  <br>
+                  <label id="lc1">Name of Institution1 (Local Language):</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 15px;" class="form-input" type="text" id="LocalLang1" placeholder="   Local Lang Name1">
+                  <br>
+                  <label id="lc2">Name of Institution2 (Local Language):</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 16px;" class="form-input" type="text" id="LocalLang2" placeholder="   Local Lang Name2">
+                  <br>
+                  <label id="lc3">Name of Institution3:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 150px;" class="form-input" type="text" id="LocalLang3" placeholder="   Local Lang Name3">
+                  <br>
+                  <label id="oc1">Other Code Name1:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 160px;" class="form-input" type="text" id="othercode1" placeholder="   Code Name1">
+                  <br>
+                  <label id="ot1">Other Code Type1:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 165px;" class="form-input" type="text" id="othertype1" placeholder="   Code Type1">
+                  <br>
+                  <label id="oc2">Other Code Name2:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 160px;" class="form-input" type="text" id="othercode2" placeholder="   Code Name2">
+                  <br>
+                  <label id="ot2">Other Code Type2:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 165px;" class="form-input" type="text" id="othertype2" placeholder="   Code Type2">
+                  <br>
+                  <label id="oc3">Other Code Name3:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 160px;" class="form-input" type="text" id="othercode3" placeholder="   Code Name3">
+                  <br>
+                  <label id="ot3">Other Code Type3:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 165px;" class="form-input" type="text" id="othertype3" placeholder="   Code Type3">
+                  <br>
+                  <label id="pa1">Postal Address 1:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 175px;" class="form-input" type="text" id="postal1" placeholder="   Postal Addr1">
+                  <br>
+                  <label id="pa2">Postal Address 2:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 175px;" class="form-input" type="text" id="postal2" placeholder="   Postal Addr2">
+                  <br>
+                  <label id="cy">City:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 270px;" class="form-input" type="text" id="city" placeholder="   City">
+                  <br>
+                  <label id="sp">State/Province:<span style="color:red;">*</span></label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 180px;" class="form-input" type="text" id="stateprovince" placeholder="   State" pattern=".*" required>
+                  <br>
+                  <label id="pc">Postal Code:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 210px;" class="form-input" type="text" id="postalcode" placeholder="   Postal Code">
+                  <br>
+                  <label id="splocal">State/Province (Local Language):</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 53px;" class="form-input" type="text" id="stateprovincelocal" placeholder="   Postal Code Local Lang">
+                  <br>
+                  <label id="spc">State/Province Code:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 146px;" class="form-input" type="text" id="spcode" placeholder="   State Postal Code">
+                  <br>
+                  <label id="link">WWW:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 255px;" class="form-input" type="text" id="www" placeholder="   Link">
+                  <br>
+                  <label id="ph">Phone:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 255px;" class="form-input" type="text" id="phone" placeholder="   Ph Number">
+                  <br>
+                  <label id="em">Email:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 260px;" class="form-input" type="email" id="email" placeholder="   @Email">
+                  <br>
+                  <label id="ic">Institution Category:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 150px;" class="form-input" type="text" id="institution_category" placeholder="   Category">
+                  <br>
+                  <label id="es">Establishment:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 195px;" class="form-input" type="text" id="establishment" placeholder="   Establishment">
+                  <br>
+                  <label id="ds">Data Source:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 210px;" class="form-input" type="text" id="datasource" placeholder="   Data">
+                  <br>
+                  <label id="icds">Institution Code from Data Source:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 45px;" class="form-input" type="text" id="icdatasource" placeholder="   IC from Data">
+                  <br>
+                  <label id="dsfl">Data Source File Link:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 145px;" class="form-input" type="text" id="datasourcefilelink" placeholder="   File Link">
+                  <br>
+                  <label id="dsd">Data Source Date:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 170px;" class="form-input" type="text" id="datasourcedate" placeholder="   Date">
+                  <br>
+                  <label id="lu">LastUpdated:</label>
+                  <input style="width: 248px;height: 47.8px;margin-left: 210px;" class="form-input" type="text" id="lastupdated" placeholder="   Last Updated">
+                  <br>
+                  <br>
+              </div>
+              <div class="other" style="margin-left: 10px;">
+                  <button style="width: 250px" type="button" class="btn submits sign-up newButtons" onclick="add_uni()">Submit Details
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+              </div>
+          </div>
+      </form>
+    </div>
+  <div class="container-footer">
+    <div class="footer">
+      <div id="footer-images">
+        <ul style="margin-top:2px;">
+          <li class="pull-left">
+            <img src="img/USC_Trojans4.jpg" class="pull-left img-responsive">
+          </li>
+          <li class="pull-center footnote">Geocode Data Reader</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    var data = {
+      UserPoolId: _config.cognito.userPoolId,
+      ClientId: _config.cognito.clientId
+    };
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(data);
+    var cognitoUser = userPool.getCurrentUser();
+    // console.log(cognitoUser);
+    window.onload = function() {
+      if (cognitoUser != null) {
+        cognitoUser.getSession(function(err, session) {
+          if (err) {
+            alert(err);
+            return;
+          }
+          if (session.isValid() == true) {
+            if (session.idToken.payload["cognito:groups"][0] != "Administrators") {
+              window.location.href = "login.html";
+            }
+          }
+          else {
+            window.location.href = "login.html";
+          }
+          console.log('session validity: ' + session.isValid());
+          //Set the profile info
+          cognitoUser.getUserAttributes(function(err, result) {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            document.getElementById("intro").innerHTML = "Hi " + result[2].getValue() + "! Welcome to GDR";
+            document.getElementsByClassName("sideIntro1")[0].innerHTML = result[2].getValue();
+          });
+        });
+      }
+      else {
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
